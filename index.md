@@ -11,35 +11,22 @@ Unless required by applicable law or agreed to in writing, software distributed 
 # RO-Crate for Federated Learning
 
 **Note:** This is a first draft currently in active development.
+
 ## RO-Crate Profile for Federated Learning
 
 A RO-Crate profile for federated learning is being developed as part of the [Fed-A-Crate project](https://elixir-europe.org/how-we-work/scientific-programme/science/hdtr/genomic-data) within the [ELIXIR Human Data and Translational Research programme](https://elixir-europe.org/how-we-work/scientific-programme/science/hdtr).
 
-## About the profile
+**Read the profile here: [Federated Learning Profile](federated-learning-profile.md).**
 
-See the profile website <https://esciencelab.org.uk/federated-learning-ro-crate-profile/>.
+There is an example RO-Crate which follows the profile: [HTML preview](example-fl-crate/ro-crate-preview.html), [JSON-LD](example-fl-crate/ro-crate-metadata.json).
 
-## How to use this repo
+## Example crate details
 
-The `make_crate.py` Python script creates an example crate that represents the profile.
+The example is based on a Flower process.
 
-To run the scripts you must install the requirements listed in `requirements.txt`, e.g. `pip install -r requirements.txt`.
+## Source code
 
-The scripts automatically run validation against the RO-Crate 1.1 specification when generating the RO-Crate. This should tell you if you did anything wrong according to the base spec (but does not mean that all entities are linked correctly). 
-
-The script generates an RO-Crate in the `fl-crate` folder. To generate a HTML preview of the crate (useful for checking things are linked as intended):
-```
-npm install ro-crate-html
-rochtml fl-crate/ro-crate-metadata.json
-```
-
-The `example-fl-crate` folder contains the example RO-Crate hosted on the [website](https://esciencelab.org.uk/federated-learning-ro-crate-profile/). This can be manually updated as required by copying from `fl-crate` (the folders are separated to prevent accidentally updating the live example while working on changes to the `make_crate.py` script).
-
-## Where to find useful metadata and identifiers
-
-* People: https://orcid.org/
-* Organizations: https://ror.org/
-* Places: https://www.geonames.org/v3/
+The source code for the profile, example, and helper scripts are publicly available on GitHub: <https://github.com/eScienceLab/federated-learning-ro-crate-profile>.
 
 ## Licensing
 
