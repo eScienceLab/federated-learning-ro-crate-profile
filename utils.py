@@ -12,17 +12,23 @@ from rocrate_validator import services, models
 #####################
 #  crate validation #
 #####################
-def validate_crate(crate_uri):
+def validate_crate(
+    crate_uri,
+    profile_identifier: "ro-crate-1.1",
+    requirement_severity=models.Severity.REQUIRED,
+    **kwargs,
+):
     # Create an instance of `ValidationSettings` class to configure the validation
     settings = services.ValidationSettings(
         # Set the path to the RO-Crate root directory
         rocrate_uri=crate_uri,
         # Set the identifier of the RO-Crate profile to use for validation.
         # If not set, the system will attempt to automatically determine the appropriate validation profile.
-        profile_identifier="ro-crate-1.1",
+        profile_identifier=profile_identifier,
         # Set the requirement level for the validation
-        requirement_severity=models.Severity.REQUIRED,
+        requirement_severity=requirement_severity,
         # requirement_severity=models.Severity.RECOMMENDED, # use for best practices!
+        **kwargs,
     )
 
     # Call the validation service with the settings

@@ -1,0 +1,125 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "conformsTo": [
+                {
+                    "@id": "https://w3id.org/ro/wfrun/process/0.5"
+                }
+            ],
+            "datePublished": "2026-02-19T13:04:59+00:00",
+            "description": "TODO",
+            "hasPart": [
+                {
+                    "@id": "quickstart-pytorch/"
+                },
+                {
+                    "@id": "quickstart-pytorch/final_model.pt"
+                }
+            ],
+            "identifier": [
+                "TODO"
+            ],
+            "license": {
+                "@id": "https://spdx.org/licenses/CC0-1.0"
+            },
+            "mainEntity": {
+                "@id": "quickstart-pytorch/final_model.pt"
+            },
+            "mentions": [
+                {
+                    "@id": "#action-d2129c7c-679c-4c67-9555-641f00eb0db1"
+                }
+            ],
+            "name": "TODO"
+        },
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            }
+        },
+        {
+            "@id": "https://spdx.org/licenses/CC0-1.0",
+            "@type": "CreativeWork",
+            "name": "Creative Commons Zero v1.0 Universal",
+            "url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode"
+        },
+        {
+            "@id": "https://flower.ai",
+            "@type": "SoftwareApplication",
+            "description": "Flower federated learning framework",
+            "name": "Flower",
+            "version": "1.26.1"
+        },
+        {
+            "@id": "quickstart-pytorch/",
+            "@type": "Dataset",
+            "description": "A Flower project based on the quickstart-pytorch tutorial",
+            "hasPart": [
+                {
+                    "@id": "quickstart-pytorch/pytorchexample/client_app.py"
+                },
+                {
+                    "@id": "quickstart-pytorch/pytorchexample/server_app.py"
+                },
+                {
+                    "@id": "quickstart-pytorch/final_model.pt"
+                }
+            ],
+            "name": "Flower project folder"
+        },
+        {
+            "@id": "quickstart-pytorch/pytorchexample/client_app.py",
+            "@type": "File",
+            "description": "Client-side code for the federated learning process",
+            "name": "Flower client app"
+        },
+        {
+            "@id": "quickstart-pytorch/pytorchexample/server_app.py",
+            "@type": "File",
+            "description": "Server-side code for the federated learning process",
+            "name": "Flower server app"
+        },
+        {
+            "@id": "quickstart-pytorch/final_model.pt",
+            "@type": "File",
+            "description": "Model trained using Flower federated learning process",
+            "name": "Output model"
+        },
+        {
+            "@id": "#action-d2129c7c-679c-4c67-9555-641f00eb0db1",
+            "@type": "CreateAction",
+            "description": "Execution of the federated learning process using `flwr run`",
+            "instrument": {
+                "@id": "https://flower.ai"
+            },
+            "name": "Execution of federated learning process",
+            "object": [
+                {
+                    "@id": "quickstart-pytorch/pytorchexample/client_app.py"
+                },
+                {
+                    "@id": "quickstart-pytorch/pytorchexample/server_app.py"
+                }
+            ],
+            "result": [
+                {
+                    "@id": "quickstart-pytorch/final_model.pt"
+                }
+            ]
+        },
+        {
+            "@id": "https://w3id.org/ro/wfrun/process/0.5",
+            "@type": "CreativeWork",
+            "name": "Process Run Crate",
+            "version": "0.5"
+        }
+    ]
+}
