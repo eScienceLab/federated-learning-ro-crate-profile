@@ -13,14 +13,29 @@
     {
       "@id": "./",
       "@type": "Dataset",
+      "author": {
+        "@id": "https://orcid.org/0000-0002-0035-6475"
+      },
       "conformsTo": {
         "@id": "https://w3id.org/ro/wfrun/process/0.5"
       },
-      "datePublished": "2026-02-19T13:04:59+00:00",
-      "description": "TODO",
+      "datePublished": "2026-02-27T13:50:54+00:00",
+      "description": "Training of an image categorization model using Flower and PyTorch. The Flower configuration is based on the quickstart-pytorch tutorial (https://flower.ai/docs/framework/tutorial-quickstart-pytorch.html). This is an example RO-Crate demonstrating the Federated Learning RO-Crate Profile.",
       "hasPart": [
         {
+          "@id": "https://huggingface.co/datasets/uoft-cs/cifar10/"
+        },
+        {
           "@id": "quickstart-pytorch/"
+        },
+        {
+          "@id": "quickstart-pytorch/pytorchexample/"
+        },
+        {
+          "@id": "quickstart-pytorch/pyproject.toml"
+        },
+        {
+          "@id": "quickstart-pytorch/README.md"
         },
         {
           "@id": "quickstart-pytorch/final_model.pt"
@@ -34,9 +49,22 @@
         "@id": "quickstart-pytorch/final_model.pt"
       },
       "mentions": {
-        "@id": "#action-d2129c7c-679c-4c67-9555-641f00eb0db1"
+        "@id": "#action-dc098066-d4c2-42aa-be36-4a39321aff27"
       },
-      "name": "TODO"
+      "name": "Training of image categorization model (Federated Learning RO-Crate example)",
+      "publisher": {
+        "@id": "https://ror.org/027m9bs27"
+      }
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-0035-6475",
+      "@type": "Person",
+      "affiliation": {
+        "@id": "https://ror.org/027m9bs27"
+      },
+      "familyName": "Chadwick",
+      "givenName": "Eli",
+      "name": "Eli Chadwick"
     },
     {
       "@id": "https://w3id.org/ro/wfrun/process/0.5",
@@ -45,26 +73,61 @@
       "version": "0.5"
     },
     {
+      "@id": "https://huggingface.co/datasets/uoft-cs/cifar10/",
+      "@type": "Dataset",
+      "conformsTo": "http://mlcommons.org/croissant/1.1",
+      "description": "The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images. The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class. The training batches contain the remaining images in random order, but some training batches may contain more images from one class than another. Between them, the training batches contain exactly 5000 images from each class.",
+      "encodingFormat": "git+https",
+      "name": "uoft-cs/cifar10 (Hugging Face dataset)"
+    },
+    {
       "@id": "quickstart-pytorch/",
       "@type": "Dataset",
       "description": "A Flower project based on the quickstart-pytorch tutorial",
       "hasPart": [
         {
-          "@id": "quickstart-pytorch/pytorchexample/client_app.py"
+          "@id": "quickstart-pytorch/pytorchexample/"
         },
         {
-          "@id": "quickstart-pytorch/pytorchexample/server_app.py"
+          "@id": "quickstart-pytorch/pyproject.toml"
         },
         {
-          "@id": "quickstart-pytorch/final_model.pt"
+          "@id": "quickstart-pytorch/README.md"
         }
       ],
       "name": "Flower project folder"
     },
     {
+      "@id": "quickstart-pytorch/pytorchexample/",
+      "@type": "Dataset",
+      "description": "Flower scripts written in Python which configure the client app, server app, datasets, and model",
+      "encodingFormat": "text/x-python",
+      "name": "Flower configuration scripts"
+    },
+    {
+      "@id": "quickstart-pytorch/pyproject.toml",
+      "@type": "File",
+      "description": "A TOML file which includes the configuration for the Flower project. It's also a Python project configuration file.",
+      "encodingFormat": "application/toml",
+      "name": "Flower project configuration TOML"
+    },
+    {
+      "@id": "quickstart-pytorch/README.md",
+      "@type": "File",
+      "about": {
+        "@id": "quickstart-pytorch/"
+      },
+      "description": "A Markdown file containing instructions for how to run the project.",
+      "encodingFormat": "text/markdown",
+      "name": "Flower project README"
+    },
+    {
       "@id": "quickstart-pytorch/final_model.pt",
       "@type": "File",
       "description": "Model trained using Flower federated learning process",
+      "encodingFormat": {
+        "@id": "https://docs.python.org/3/library/pickle.html"
+      },
       "name": "Output model"
     },
     {
@@ -74,8 +137,11 @@
       "url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode"
     },
     {
-      "@id": "#action-d2129c7c-679c-4c67-9555-641f00eb0db1",
+      "@id": "#action-dc098066-d4c2-42aa-be36-4a39321aff27",
       "@type": "CreateAction",
+      "agent": {
+        "@id": "https://orcid.org/0000-0002-0035-6475"
+      },
       "description": "Execution of the federated learning process using `flwr run`",
       "instrument": {
         "@id": "https://flower.ai"
@@ -83,15 +149,21 @@
       "name": "Execution of federated learning process",
       "object": [
         {
-          "@id": "quickstart-pytorch/pytorchexample/client_app.py"
+          "@id": "quickstart-pytorch/pytorchexample/"
         },
         {
-          "@id": "quickstart-pytorch/pytorchexample/server_app.py"
+          "@id": "quickstart-pytorch/pyproject.toml"
         }
       ],
       "result": {
         "@id": "quickstart-pytorch/final_model.pt"
       }
+    },
+    {
+      "@id": "https://ror.org/027m9bs27",
+      "@type": "Organization",
+      "name": "The University of Manchester",
+      "url": "https://www.manchester.ac.uk"
     },
     {
       "@id": "ro-crate-metadata.json",
@@ -108,19 +180,14 @@
       "@type": "SoftwareApplication",
       "description": "Flower federated learning framework",
       "name": "Flower",
+      "url": "https://flower.ai",
       "version": "1.26.1"
     },
     {
-      "@id": "quickstart-pytorch/pytorchexample/client_app.py",
-      "@type": "File",
-      "description": "Client-side code for the federated learning process",
-      "name": "Flower client app"
-    },
-    {
-      "@id": "quickstart-pytorch/pytorchexample/server_app.py",
-      "@type": "File",
-      "description": "Server-side code for the federated learning process",
-      "name": "Flower server app"
+      "@id": "https://docs.python.org/3/library/pickle.html",
+      "@type": "WebPage",
+      "description": "Pickle Python library documentation. The pickle module implements binary protocols for serializing and de-serializing a Python object structure.",
+      "name": "Pickle Python library documentation"
     }
   ]
 }
@@ -149,17 +216,17 @@ table.table {
   <nav class="navbar">
 
     <ul class="nav navbar-nav" >
-        <li ><a href="#"><span class="glyphicon glyphicon-home dataset_name">&nbsp;TODO</span></a></li>
+        <li ><a href="#"><span class="glyphicon glyphicon-home dataset_name">&nbsp;Training of image categorization model (Federated Learning RO-Crate example)</span></a></li>
     </ul>
 
   </nav>
 <div class="container">
 <div class="jumbotron">
 <h4 class="citation"></h4>
-<h3 class="item_name">TODO</h3>
+<h3 class="item_name">Training of image categorization model (Federated Learning RO-Crate example)</h3>
 
 
-<a href="./ro-crate-metadata.json">⬇️🏷️ Download all the metadata for <span class='name'>TODO</span> in JSON-LD format</a>
+<a href="./ro-crate-metadata.json">⬇️🏷️ Download all the metadata for <span class='name'>Training of image categorization model (Federated Learning RO-Crate example)</span> in JSON-LD format</a>
 
 
 <div id="check"></div>
@@ -172,7 +239,7 @@ table.table {
 <div id="summary">
 <div class='all-meta'>
             <div>
-                <h3> TODO</h3>
+                <h3> Training of image categorization model (Federated Learning RO-Crate example)</h3>
                 
                 
                 
@@ -185,23 +252,34 @@ table.table {
             <td style='text-align:left'><span>./</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>TODO</span></td>
+            <td style='text-align:left'><span>Training of image categorization model (Federated Learning RO-Crate example)</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">@type</th>
             <td style='text-align:left'><span>Dataset</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
-            <td style='text-align:left'><span>TODO</span></td>
+            <td style='text-align:left'><span>Training of an image categorization model using Flower and PyTorch. The Flower configuration is based on the quickstart-pytorch tutorial (https://flower.ai/docs/framework/tutorial-quickstart-pytorch.html). This is an example RO-Crate demonstrating the Federated Learning RO-Crate Profile.</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">datePublished<span>&nbsp;</span><a href="http://schema.org/datePublished">[?]</a></th>
-            <td style='text-align:left'><span>2026-02-19T13:04:59+00:00</span></td>
+            <td style='text-align:left'><span>2026-02-27T13:50:54+00:00</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
+            <td style='text-align:left'><a href="#https%3A//orcid.org/0000-0002-0035-6475">Eli Chadwick</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//w3id.org/ro/wfrun/process/0.5">Process Run Crate</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
             <td style='text-align:left'><ul>
+                        <li><a href="#https%3A//huggingface.co/datasets/uoft-cs/cifar10/">uoft-cs/cifar10 (Hugging Face dataset)</a></li>
+                        
                         <li><a href="#quickstart-pytorch/">Flower project folder</a></li>
+                        
+                        <li><a href="#quickstart-pytorch/pytorchexample/">Flower configuration scripts</a></li>
+                        
+                        <li><a href="#quickstart-pytorch/pyproject.toml">Flower project configuration TOML</a></li>
+                        
+                        <li><a href="#quickstart-pytorch/README.md">Flower project README</a></li>
                         
                         <li><a href="#quickstart-pytorch/final_model.pt">Output model</a></li>
                         </ul></td>
@@ -216,10 +294,51 @@ table.table {
             <td style='text-align:left'><a href="#quickstart-pytorch/final_model.pt">Output model</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">mentions<span>&nbsp;</span><a href="http://schema.org/mentions">[?]</a></th>
-            <td style='text-align:left'><a href="#%23action-d2129c7c-679c-4c67-9555-641f00eb0db1">Execution of federated learning process</a></td>
+            <td style='text-align:left'><a href="#%23action-dc098066-d4c2-42aa-be36-4a39321aff27">Execution of federated learning process</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">publisher<span>&nbsp;</span><a href="http://schema.org/publisher">[?]</a></th>
+            <td style='text-align:left'><a href="#https%3A//ror.org/027m9bs27">The University of Manchester</a></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
             <td style='text-align:left'><a href="#ro-crate-metadata.json">ro-crate-metadata.json</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+            </div>
+        <hr/><br/><br/>
+            <div>
+                <h3><a href="https://orcid.org/0000-0002-0035-6475">Go to: </a> Eli Chadwick</h3>
+                
+                
+                
+                
+        <div id="https://orcid.org/0000-0002-0035-6475">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><a href="https://orcid.org/0000-0002-0035-6475">https://orcid.org/0000-0002-0035-6475</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>Eli Chadwick</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">familyName<span>&nbsp;</span><a href="http://schema.org/familyName">[?]</a></th>
+            <td style='text-align:left'><span>Chadwick</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">givenName<span>&nbsp;</span><a href="http://schema.org/givenName">[?]</a></th>
+            <td style='text-align:left'><span>Eli</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>Person</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">affiliation<span>&nbsp;</span><a href="http://schema.org/affiliation">[?]</a></th>
+            <td style='text-align:left'><a href="#https%3A//ror.org/027m9bs27">The University of Manchester</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">author<span>&nbsp;</span><a href="http://schema.org/author">[?]</a></th>
+            <td style='text-align:left'><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">agent<span>&nbsp;</span><a href="http://schema.org/agent">[?]</a></th>
+            <td style='text-align:left'><a href="#%23action-dc098066-d4c2-42aa-be36-4a39321aff27">Execution of federated learning process</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -248,7 +367,42 @@ table.table {
             <td style='text-align:left'><span>0.5</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><a href="#./">TODO</a></td>
+            <td style='text-align:left'><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+            </div>
+        <hr/><br/><br/>
+            <div>
+                <h3><a href="https://huggingface.co/datasets/uoft-cs/cifar10/">Go to: </a> uoft-cs/cifar10 (Hugging Face dataset)</h3>
+                
+                
+                
+                
+        <div id="https://huggingface.co/datasets/uoft-cs/cifar10/">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><a href="https://huggingface.co/datasets/uoft-cs/cifar10/">https://huggingface.co/datasets/uoft-cs/cifar10/</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>uoft-cs/cifar10 (Hugging Face dataset)</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>Dataset</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
+            <td style='text-align:left'><span>The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images. The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class. The training batches contain the remaining images in random order, but some training batches may contain more images from one class than another. Between them, the training batches contain exactly 5000 images from each class.</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
+            <td style='text-align:left'><span>git+https</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
+            <td style='text-align:left'><a href="http://mlcommons.org/croissant/1.1">http://mlcommons.org/croissant/1.1</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -278,15 +432,135 @@ table.table {
             </tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#quickstart-pytorch/pytorchexample/client_app.py">Flower client app</a></li>
+                        <li><a href="#quickstart-pytorch/pytorchexample/">Flower configuration scripts</a></li>
                         
-                        <li><a href="#quickstart-pytorch/pytorchexample/server_app.py">Flower server app</a></li>
+                        <li><a href="#quickstart-pytorch/pyproject.toml">Flower project configuration TOML</a></li>
                         
-                        <li><a href="#quickstart-pytorch/final_model.pt">Output model</a></li>
+                        <li><a href="#quickstart-pytorch/README.md">Flower project README</a></li>
                         </ul></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">TODO</a></td>
+            <td style='text-align:left'><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
+            <td style='text-align:left'><a href="#quickstart-pytorch/README.md">Flower project README</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+            </div>
+        <hr/><br/><br/>
+            <div>
+                <h3> Flower configuration scripts</h3>
+                
+                
+                
+                
+        <div id="quickstart-pytorch/pytorchexample/">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>quickstart-pytorch/pytorchexample/</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>Flower configuration scripts</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>Dataset</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
+            <td style='text-align:left'><span>Flower scripts written in Python which configure the client app, server app, datasets, and model</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
+            <td style='text-align:left'><span>text/x-python</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></li>
+                        
+                        <li><a href="#quickstart-pytorch/">Flower project folder</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">object<span>&nbsp;</span><a href="http://schema.org/object">[?]</a></th>
+            <td style='text-align:left'><a href="#%23action-dc098066-d4c2-42aa-be36-4a39321aff27">Execution of federated learning process</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+            </div>
+        <hr/><br/><br/>
+            <div>
+                <h3><a href="quickstart-pytorch/pyproject.toml">⬇️ Download: </a> Flower project configuration TOML</h3>
+                
+                
+                
+                
+        <div id="quickstart-pytorch/pyproject.toml">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>quickstart-pytorch/pyproject.toml</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>Flower project configuration TOML</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
+            <td style='text-align:left'><span>A TOML file which includes the configuration for the Flower project. It's also a Python project configuration file.</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
+            <td style='text-align:left'><span>application/toml</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></li>
+                        
+                        <li><a href="#quickstart-pytorch/">Flower project folder</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">object<span>&nbsp;</span><a href="http://schema.org/object">[?]</a></th>
+            <td style='text-align:left'><a href="#%23action-dc098066-d4c2-42aa-be36-4a39321aff27">Execution of federated learning process</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+            </div>
+        <hr/><br/><br/>
+            <div>
+                <h3><a href="quickstart-pytorch/README.md">⬇️ Download: </a> Flower project README</h3>
+                
+                
+                
+                
+        <div id="quickstart-pytorch/README.md">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>quickstart-pytorch/README.md</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>Flower project README</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
+            <td style='text-align:left'><span>A Markdown file containing instructions for how to run the project.</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
+            <td style='text-align:left'><span>text/markdown</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
+            <td style='text-align:left'><a href="#quickstart-pytorch/">Flower project folder</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></li>
+                        
+                        <li><a href="#quickstart-pytorch/">Flower project folder</a></li>
+                        </ul></td>
             </tr></tbody>
             </table>
         </div>
@@ -313,19 +587,18 @@ table.table {
             </tr><tr>
             <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
             <td style='text-align:left'><span>Model trained using Flower federated learning process</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
+            <td style='text-align:left'><a href="#https%3A//docs.python.org/3/library/pickle.html">Pickle Python library documentation</a></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><ul>
-                        <li><a href="#./">TODO</a></li>
-                        
-                        <li><a href="#quickstart-pytorch/">Flower project folder</a></li>
-                        </ul></td>
+            <td style='text-align:left'><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
-            <td style='text-align:left'><a href="#./">TODO</a></td>
+            <td style='text-align:left'><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">result<span>&nbsp;</span><a href="http://schema.org/result">[?]</a></th>
-            <td style='text-align:left'><a href="#%23action-d2129c7c-679c-4c67-9555-641f00eb0db1">Execution of federated learning process</a></td>
+            <td style='text-align:left'><a href="#%23action-dc098066-d4c2-42aa-be36-4a39321aff27">Execution of federated learning process</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -354,7 +627,7 @@ table.table {
             <td style='text-align:left'><a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode">https://creativecommons.org/publicdomain/zero/1.0/legalcode</a></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">license<span>&nbsp;</span><a href="http://schema.org/license">[?]</a></th>
-            <td style='text-align:left'><a href="#./">TODO</a></td>
+            <td style='text-align:left'><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -366,12 +639,12 @@ table.table {
                 
                 
                 
-        <div id="#action-d2129c7c-679c-4c67-9555-641f00eb0db1">
+        <div id="#action-dc098066-d4c2-42aa-be36-4a39321aff27">
             
             <table class="table metadata table-striped" >
                 <tbody><tr>
             <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>#action-d2129c7c-679c-4c67-9555-641f00eb0db1</span></td>
+            <td style='text-align:left'><span>#action-dc098066-d4c2-42aa-be36-4a39321aff27</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
             <td style='text-align:left'><span>Execution of federated learning process</span></td>
@@ -382,21 +655,56 @@ table.table {
             <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
             <td style='text-align:left'><span>Execution of the federated learning process using `flwr run`</span></td>
             </tr><tr>
+            <th style="text-align:left;" class="prop">agent<span>&nbsp;</span><a href="http://schema.org/agent">[?]</a></th>
+            <td style='text-align:left'><a href="#https%3A//orcid.org/0000-0002-0035-6475">Eli Chadwick</a></td>
+            </tr><tr>
             <th style="text-align:left;" class="prop">instrument<span>&nbsp;</span><a href="http://schema.org/instrument">[?]</a></th>
             <td style='text-align:left'><a href="#https%3A//flower.ai">Flower</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">object<span>&nbsp;</span><a href="http://schema.org/object">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#quickstart-pytorch/pytorchexample/client_app.py">Flower client app</a></li>
+                        <li><a href="#quickstart-pytorch/pytorchexample/">Flower configuration scripts</a></li>
                         
-                        <li><a href="#quickstart-pytorch/pytorchexample/server_app.py">Flower server app</a></li>
+                        <li><a href="#quickstart-pytorch/pyproject.toml">Flower project configuration TOML</a></li>
                         </ul></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">result<span>&nbsp;</span><a href="http://schema.org/result">[?]</a></th>
             <td style='text-align:left'><a href="#quickstart-pytorch/final_model.pt">Output model</a></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">mentions<span>&nbsp;</span><a href="http://schema.org/mentions">[?]</a></th>
-            <td style='text-align:left'><a href="#./">TODO</a></td>
+            <td style='text-align:left'><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+            </div>
+        <hr/><br/><br/>
+            <div>
+                <h3><a href="https://ror.org/027m9bs27">Go to: </a> The University of Manchester</h3>
+                
+                
+                
+                
+        <div id="https://ror.org/027m9bs27">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><a href="https://ror.org/027m9bs27">https://ror.org/027m9bs27</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>The University of Manchester</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>Organization</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">url<span>&nbsp;</span><a href="http://schema.org/url">[?]</a></th>
+            <td style='text-align:left'><a href="https://www.manchester.ac.uk">https://www.manchester.ac.uk</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">publisher<span>&nbsp;</span><a href="http://schema.org/publisher">[?]</a></th>
+            <td style='text-align:left'><a href="#./">Training of image categorization model (Federated Learning RO-Crate example)</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">affiliation<span>&nbsp;</span><a href="http://schema.org/affiliation">[?]</a></th>
+            <td style='text-align:left'><a href="#https%3A//orcid.org/0000-0002-0035-6475">Eli Chadwick</a></td>
             </tr></tbody>
             </table>
         </div>

@@ -22,44 +22,37 @@ def add_authors_and_affiliations(crate: ROCrate) -> None:
     # authors and affiliations
     # TODO update this
     # institutions
-    wsi = crate.add(
+    uniman = crate.add(
         ContextEntity(
             crate,
-            "https://ror.org/05cy4wa09",
+            "https://ror.org/027m9bs27",
             properties={
                 "@type": "Organization",
-                "name": "Wellcome Sanger Institute",
-                "url": "https://www.sanger.ac.uk",
+                "name": "The University of Manchester",
+                "url": "https://www.manchester.ac.uk",
             },
         )
     )
-    cambridge = crate.add(
+    eli = crate.add(
         ContextEntity(
             crate,
-            "https://www.geonames.org/2653941",
-            properties={"@type": "Place", "name": "Cambridge, UK"},
+            "https://orcid.org/0000-0002-0035-6475",
+            properties={
+                "@type": "Person",
+                "name": "Eli Chadwick",
+                "givenName": "Eli",
+                "familyName": "Chadwick",
+            },
         )
     )
-    wsi["location"] = cambridge
+    eli["affiliation"] = uniman
+
+    return
 
 
 ##################
 # analysis stage #
 ##################
-
-
-def add_analysis_stage(crate: ROCrate, analysis_accessions: str) -> Entity:
-
-    workflow_assembly = crate.add_workflow(
-        dest_path=f"#assembly-workflow-{uuid.uuid4()}",
-        properties={
-            "name": f"Assembly workflow (placeholder)",
-            "description": "A placeholder for a workflow that could exist on WorkflowHub (etc) or be directly contained within the crate",
-            "sdDatePublished": str(datetime.now()),
-        },
-    )
-
-    return
 
 
 def main():
@@ -70,8 +63,10 @@ def main():
     # core metadata  #
     ##################
 
-    crate.name = f"TODO"
-    crate.description = f"TODO"
+    crate.name = (
+        f"Training of image categorization model (Federated Learning RO-Crate example)"
+    )
+    crate.description = f"Training of an image categorization model using Flower and PyTorch. The Flower configuration is based on the quickstart-pytorch tutorial (https://flower.ai/docs/framework/tutorial-quickstart-pytorch.html). This is an example RO-Crate demonstrating the Federated Learning RO-Crate Profile."
     license = crate.add(
         ContextEntity(
             crate,
@@ -87,11 +82,31 @@ def main():
 
     crate.root_dataset["identifier"] = ["TODO"]
 
-    # add_authors_and_affiliations(crate=crate)
+    add_authors_and_affiliations(crate=crate)
 
-    ###########
-    # process #
-    ###########
+    crate.root_dataset["publisher"] = crate.get("https://ror.org/027m9bs27")
+    crate.root_dataset["author"] = crate.get("https://orcid.org/0000-0002-0035-6475")
+
+    ############
+    # datasets #
+    ############
+
+    training_dataset = crate.add_dataset(
+        source="https://huggingface.co/datasets/uoft-cs/cifar10",
+        dest_path=None,
+        properties={
+            "name": "uoft-cs/cifar10 (Hugging Face dataset)",
+            "description": "The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images. The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class. The training batches contain the remaining images in random order, but some training batches may contain more images from one class than another. Between them, the training batches contain exactly 5000 images from each class.",
+            "conformsTo": "http://mlcommons.org/croissant/1.1",
+            "encodingFormat": "git+https",
+            # TODO - could pull out some of the Croissant data, add it to the crate in full, or link it
+            # https://huggingface.co/api/datasets/uoft-cs/cifar10/croissant
+        },
+    )
+
+    #################
+    # configuration #
+    #################
 
     # instrument - Flower
     flower = crate.add(
@@ -103,10 +118,12 @@ def main():
                 "name": "Flower",
                 "description": "Flower federated learning framework",
                 "version": "1.26.1",
+                "url": "https://flower.ai",
             },
         )
     )
 
+    # Flower project files - configuration
     flower_project = crate.add_dataset(
         source="example-data",
         dest_path="quickstart-pytorch",
@@ -115,21 +132,49 @@ def main():
             "description": "A Flower project based on the quickstart-pytorch tutorial",
         },
     )
-    client_app_file = crate.add_file(
-        source="example-data/pytorchexample/client_app.py",
-        dest_path="quickstart-pytorch/pytorchexample/client_app.py",
+    flower_config_scripts = crate.add_dataset(
+        source="example-data/pytorchexample",
+        dest_path="quickstart-pytorch/pytorchexample",
         properties={
-            "name": "Flower client app",
-            "description": "Client-side code for the federated learning process",
+            "name": "Flower configuration scripts",
+            "description": "Flower scripts written in Python which configure the client app, server app, datasets, and model",
+            "encodingFormat": "text/x-python",
         },
     )
-    server_app_file = crate.add_file(
-        source="example-data/pytorchexample/server_app.py",
-        dest_path="quickstart-pytorch/pytorchexample/server_app.py",
+    flower_config_file = crate.add_file(
+        source="example-data/pyproject.toml",
+        dest_path="quickstart-pytorch/pyproject.toml",
         properties={
-            "name": "Flower server app",
-            "description": "Server-side code for the federated learning process",
+            "name": "Flower project configuration TOML",
+            "description": "A TOML file which includes the configuration for the Flower project. It's also a Python project configuration file.",
+            "encodingFormat": "application/toml",
         },
+    )
+    readme = crate.add_file(
+        source="example-data/README.md",
+        dest_path="quickstart-pytorch/README.md",
+        properties={
+            "name": "Flower project README",
+            "description": "A Markdown file containing instructions for how to run the project.",
+            "encodingFormat": "text/markdown",
+        },
+    )
+    readme["about"] = flower_project
+    flower_project["hasPart"] = [flower_config_scripts, flower_config_file, readme]
+
+    #################
+    # output model #
+    #################
+    pickle_encoding = crate.add(
+        ContextEntity(
+            crate,
+            "https://docs.python.org/3/library/pickle.html",
+            properties={
+                "@type": "WebPage",
+                "name": "Pickle Python library documentation",
+                "description": "Pickle Python library documentation. The pickle module implements binary protocols for serializing and de-serializing a Python object structure.",
+            },
+        )
     )
     model_file = crate.add_file(
         source="example-data/final_model.pt",
@@ -137,29 +182,31 @@ def main():
         properties={
             "name": "Output model",
             "description": "Model trained using Flower federated learning process",
-            # TODO encoding format
         },
     )
-    flower_project.append_to("hasPart", [client_app_file, server_app_file, model_file])
+    model_file["encodingFormat"] = pickle_encoding
+
+    #############
+    # execution #
+    #############
 
     execution = crate.add_action(
         instrument=flower,
         identifier=f"#action-{uuid.uuid4()}",
-        object=[client_app_file, server_app_file],  # TODO also include config files?
+        object=[flower_config_scripts, flower_config_file, training_dataset],
         result=[model_file],
         properties={
             "name": "Execution of federated learning process",
             "description": "Execution of the federated learning process using `flwr run`",
             # TODO "startTime"
             # TODO "endTime"
-            # TODO "agent"
         },
     )
+    execution["agent"] = crate.get("https://orcid.org/0000-0002-0035-6475")
 
     #################
     # write & check #
     #################
-    crate.root_dataset["hasPart"] = [flower_project, model_file]  # TODO
     crate.root_dataset.append_to("mentions", execution)  # TODO
     # the output model is the focus of the crate
     crate.root_dataset["mainEntity"] = model_file  # TODO

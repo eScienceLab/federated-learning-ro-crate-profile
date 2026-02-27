@@ -4,16 +4,31 @@
         {
             "@id": "./",
             "@type": "Dataset",
+            "author": {
+                "@id": "https://orcid.org/0000-0002-0035-6475"
+            },
             "conformsTo": [
                 {
                     "@id": "https://w3id.org/ro/wfrun/process/0.5"
                 }
             ],
-            "datePublished": "2026-02-19T13:04:59+00:00",
-            "description": "TODO",
+            "datePublished": "2026-02-27T13:50:54+00:00",
+            "description": "Training of an image categorization model using Flower and PyTorch. The Flower configuration is based on the quickstart-pytorch tutorial (https://flower.ai/docs/framework/tutorial-quickstart-pytorch.html). This is an example RO-Crate demonstrating the Federated Learning RO-Crate Profile.",
             "hasPart": [
                 {
+                    "@id": "https://huggingface.co/datasets/uoft-cs/cifar10/"
+                },
+                {
                     "@id": "quickstart-pytorch/"
+                },
+                {
+                    "@id": "quickstart-pytorch/pytorchexample/"
+                },
+                {
+                    "@id": "quickstart-pytorch/pyproject.toml"
+                },
+                {
+                    "@id": "quickstart-pytorch/README.md"
                 },
                 {
                     "@id": "quickstart-pytorch/final_model.pt"
@@ -30,10 +45,13 @@
             },
             "mentions": [
                 {
-                    "@id": "#action-d2129c7c-679c-4c67-9555-641f00eb0db1"
+                    "@id": "#action-dc098066-d4c2-42aa-be36-4a39321aff27"
                 }
             ],
-            "name": "TODO"
+            "name": "Training of image categorization model (Federated Learning RO-Crate example)",
+            "publisher": {
+                "@id": "https://ror.org/027m9bs27"
+            }
         },
         {
             "@id": "ro-crate-metadata.json",
@@ -52,10 +70,35 @@
             "url": "https://creativecommons.org/publicdomain/zero/1.0/legalcode"
         },
         {
+            "@id": "https://ror.org/027m9bs27",
+            "@type": "Organization",
+            "name": "The University of Manchester",
+            "url": "https://www.manchester.ac.uk"
+        },
+        {
+            "@id": "https://orcid.org/0000-0002-0035-6475",
+            "@type": "Person",
+            "affiliation": {
+                "@id": "https://ror.org/027m9bs27"
+            },
+            "familyName": "Chadwick",
+            "givenName": "Eli",
+            "name": "Eli Chadwick"
+        },
+        {
+            "@id": "https://huggingface.co/datasets/uoft-cs/cifar10/",
+            "@type": "Dataset",
+            "conformsTo": "http://mlcommons.org/croissant/1.1",
+            "description": "The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images. The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class. The training batches contain the remaining images in random order, but some training batches may contain more images from one class than another. Between them, the training batches contain exactly 5000 images from each class.",
+            "encodingFormat": "git+https",
+            "name": "uoft-cs/cifar10 (Hugging Face dataset)"
+        },
+        {
             "@id": "https://flower.ai",
             "@type": "SoftwareApplication",
             "description": "Flower federated learning framework",
             "name": "Flower",
+            "url": "https://flower.ai",
             "version": "1.26.1"
         },
         {
@@ -64,38 +107,62 @@
             "description": "A Flower project based on the quickstart-pytorch tutorial",
             "hasPart": [
                 {
-                    "@id": "quickstart-pytorch/pytorchexample/client_app.py"
+                    "@id": "quickstart-pytorch/pytorchexample/"
                 },
                 {
-                    "@id": "quickstart-pytorch/pytorchexample/server_app.py"
+                    "@id": "quickstart-pytorch/pyproject.toml"
                 },
                 {
-                    "@id": "quickstart-pytorch/final_model.pt"
+                    "@id": "quickstart-pytorch/README.md"
                 }
             ],
             "name": "Flower project folder"
         },
         {
-            "@id": "quickstart-pytorch/pytorchexample/client_app.py",
-            "@type": "File",
-            "description": "Client-side code for the federated learning process",
-            "name": "Flower client app"
+            "@id": "quickstart-pytorch/pytorchexample/",
+            "@type": "Dataset",
+            "description": "Flower scripts written in Python which configure the client app, server app, datasets, and model",
+            "encodingFormat": "text/x-python",
+            "name": "Flower configuration scripts"
         },
         {
-            "@id": "quickstart-pytorch/pytorchexample/server_app.py",
+            "@id": "quickstart-pytorch/pyproject.toml",
             "@type": "File",
-            "description": "Server-side code for the federated learning process",
-            "name": "Flower server app"
+            "description": "A TOML file which includes the configuration for the Flower project. It's also a Python project configuration file.",
+            "encodingFormat": "application/toml",
+            "name": "Flower project configuration TOML"
+        },
+        {
+            "@id": "quickstart-pytorch/README.md",
+            "@type": "File",
+            "about": {
+                "@id": "quickstart-pytorch/"
+            },
+            "description": "A Markdown file containing instructions for how to run the project.",
+            "encodingFormat": "text/markdown",
+            "name": "Flower project README"
+        },
+        {
+            "@id": "https://docs.python.org/3/library/pickle.html",
+            "@type": "WebPage",
+            "description": "Pickle Python library documentation. The pickle module implements binary protocols for serializing and de-serializing a Python object structure.",
+            "name": "Pickle Python library documentation"
         },
         {
             "@id": "quickstart-pytorch/final_model.pt",
             "@type": "File",
             "description": "Model trained using Flower federated learning process",
+            "encodingFormat": {
+                "@id": "https://docs.python.org/3/library/pickle.html"
+            },
             "name": "Output model"
         },
         {
-            "@id": "#action-d2129c7c-679c-4c67-9555-641f00eb0db1",
+            "@id": "#action-dc098066-d4c2-42aa-be36-4a39321aff27",
             "@type": "CreateAction",
+            "agent": {
+                "@id": "https://orcid.org/0000-0002-0035-6475"
+            },
             "description": "Execution of the federated learning process using `flwr run`",
             "instrument": {
                 "@id": "https://flower.ai"
@@ -103,10 +170,10 @@
             "name": "Execution of federated learning process",
             "object": [
                 {
-                    "@id": "quickstart-pytorch/pytorchexample/client_app.py"
+                    "@id": "quickstart-pytorch/pytorchexample/"
                 },
                 {
-                    "@id": "quickstart-pytorch/pytorchexample/server_app.py"
+                    "@id": "quickstart-pytorch/pyproject.toml"
                 }
             ],
             "result": [
