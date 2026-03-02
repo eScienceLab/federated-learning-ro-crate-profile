@@ -40,7 +40,7 @@ jobs:
         run: |
           bundle exec htmlproofer \
           --ignore-files "/.*\/ro-crate-preview\.html/","/.\/example-*\/*" \
-          --ignore-urls "/https://w3id.org/ro/terms/workflow-run/,/https://rdmkit.elixir-europe.org/federated_learning/"
+          --ignore-urls "/https://w3id.org/ro/terms/workflow-run/,/https://rdmkit.elixir-europe.org/federated_learning/" \
           --enforce-https false \
           ./_site
 
