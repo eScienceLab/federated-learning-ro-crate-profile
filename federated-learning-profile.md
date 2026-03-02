@@ -1,7 +1,5 @@
 # Federated Learning RO-Crate Profile
 
-*Text in Italics = note or template, remove later*
-
 Version: 0.1  
 Permalink: N/A – use draft link <https://esciencelab.org.uk/federated-learning-ro-crate-profile/federated-learning-profile.html>
 Authors:
@@ -34,7 +32,7 @@ Ideal: Enable the federated learning process to be re-run automatically by provi
 
 ## Compatibility
 
-This profile is based on RO-Crate 1.2 and aims to be compatible with other profiles used in trusted research environments and workflows, including [Five Safes Crate] (0.4+) and the [Workflow Run RO-Crate] family.
+This profile is based on RO-Crate 1.2 and aims to be compatible with other profiles used in trusted research environments and workflows, including [Five Safes RO-Crate] (0.4+) and the [Workflow Run RO-Crate] family.
 
 ## Inheritance
 
@@ -42,7 +40,7 @@ This profile inherits all the requirements from [Process Run Crate], a profile d
 
 To summarise this profile as an extension of Process Run Crate: the [CreateAction] represents the learning process, with [object] referencing the training datasets AND the learning configuration, [result] referencing the output model, and [instrument] referencing the federated learning framework used (e.g. Flower).
 
-## *Example Metadata Document (`ro-crate-metadata.json`)*
+## Example Metadata Document (`ro-crate-metadata.json`)
 
 Example metadata file: [JSON-LD](example-fl-crate/ro-crate-metadata.json), [HTML preview](example-fl-crate/ro-crate-preview.html).
 
@@ -57,14 +55,10 @@ In data entities representing training datasets:
 * `@id` SHOULD be a persistent identifier for the dataset  
 * [license] SHOULD be included. For public datasets this could be an open license, for restricted or sensitive datasets this can describe the conditions of access  
 * [conformsTo] MAY reference a common data model or phenotype dictionary that data in the dataset follows, e.g. OMOP mapping, GA4GH Phenopackets, Frictionless description  
-* [subjectOf] MAY reference a contextual or data entity describing a Data Management Plan for the dataset.  
-* If [Croissant](https://docs.mlcommons.org/croissant/docs/croissant-spec-1.1.html) metadata is available for the dataset, *TODO describe how this should be included in the crate*
-* *How to describe bias/imbalance? Is there a way to do this in Croissant?*
-* *List of variables used/filtering criteria - minimum information needed to succeed in the experiment*
-  * *For GDPR - if the dataset has 100 vars but you only need 20, you only get the 20*
-  * *Information about variables in the dataset may be available - is this needed?* 
+* [subjectOf] MAY reference a contextual or data entity describing a Data Management Plan for the dataset
+* If [Croissant](https://docs.mlcommons.org/croissant/docs/croissant-spec-1.1.html) metadata is available for the dataset, this MAY also be included
 
-Each entity representing a training dataset MUST be referenced from [object] on the [CreateAction] which describes the training execution (see [Federated Learning Process Execution](#federated-learning-process-execution))
+Each entity representing a training dataset MUST be referenced from [object] on the [CreateAction] which describes the training execution (see [Federated Learning Process Execution](#federated-learning-process-execution)).
 
 #### Data partitioning strategy
 
@@ -186,7 +180,7 @@ In processes where sensitive data is used, the [Five Safes RO-Crate] profile MAY
 [Workflow Run Crate]: https://www.researchobject.org/workflow-run-crate/profiles/workflow_run_crate
 [Provenance Run Crate]: https://www.researchobject.org/workflow-run-crate/profiles/provenance_run_crate
 [Workflow Run RO-Crate]: https://www.researchobject.org/workflow-run-crate
-[Five Safes Crate]: https://trefx.uk/5s-crate/
+[Five Safes RO-Crate]: https://trefx.uk/5s-crate/
 [CreateAction]: http://schema.org/CreateAction
 [object]: http://schema.org/object
 [result]: http://schema.org/result
