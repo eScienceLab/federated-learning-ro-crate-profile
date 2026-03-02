@@ -22,7 +22,7 @@ There is an example RO-Crate which follows the profile: [HTML preview](example-f
 
 ## Example crate details
 
-The example is based on a Flower process.
+The example crate represents the training of an image categorization model using Flower and PyTorch. The Flower configuration is based on the [Flower quickstart-pytorch tutorial](https://flower.ai/docs/framework/tutorial-quickstart-pytorch.html).
 
 ## Source code
 

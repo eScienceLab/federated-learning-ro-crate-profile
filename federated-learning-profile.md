@@ -1,7 +1,7 @@
 # Federated Learning RO-Crate Profile
 
 Version: 0.1  
-Permalink: N/A – use draft link <https://esciencelab.org.uk/federated-learning-ro-crate-profile/federated-learning-profile.html>
+Permalink: N/A – use draft link <https://esciencelab.org.uk/federated-learning-ro-crate-profile/federated-learning-profile.html>  
 Authors:
 
 * Eli Chadwick, <https://orcid.org/0000-0002-0035-6475>
