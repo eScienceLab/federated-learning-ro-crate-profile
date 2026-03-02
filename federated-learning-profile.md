@@ -91,7 +91,7 @@ Those entities SHOULD be referenced from [object] in the [CreateAction] describi
 
 #### Training configuration – as environment variables
 
-Configuration that is provided using environment variables should be described using [PropertyValue] entities, as in [Process Run Crate: Representing environment variable settings](https://www.researchobject.org/workflow-run-crate/profiles/process_run_crate/#representing-enviroment-variable-settings)
+Configuration that is provided using environment variables should be described using [PropertyValue] entities, as in [Process Run Crate: Representing environment variable settings](https://www.researchobject.org/workflow-run-crate/profiles/process_run_crate/#representing-environment-variable-settings)
 
 ### Federated Learning Process Execution
 
@@ -103,13 +103,13 @@ A [CreateAction] entity MUST be present which describes the execution of the tra
 
 * [instrument] MUST reference the entity which describes the [training tool or workflow](#training-tool-or-workflow)  
 * [object]:  
-  * SHOULD reference all the [input datasets](#input-datasets) used for the training  
-  * SHOULD reference any [configuration files](#training-configuration-as-files) used by the [instrument]  
+  * SHOULD reference all the [input datasets](#input-data) used for the training  
+  * SHOULD reference any [configuration files](#training-configuration--as-files) used by the [instrument]  
 * [result]:  
   * MUST reference the entity describing the [output model](#output-model)  
-  * MAY reference [performance metrics](#metrics-model-performance) of the model or training process (excluding resource usage)  
-* [environment] MAY reference [environmental variables used for configuration](#training-configuration-as-environment-variables)  
-* [resourceUsage] MAY reference [resource usage metrics](#metrics-resource-usage) for the training process  
+  * MAY reference [performance metrics](#metrics---model-performance) of the model or training process (excluding resource usage)  
+* [environment] MAY reference [environmental variables used for configuration](#training-configuration--as-environment-variables)  
+* [resourceUsage] MAY reference [resource usage metrics](#metrics---resource-usage) for the training process  
 * Other properties (e.g. [name], [description], [agent]) SHOULD follow the guidelines set in [Process Run Crate](https://www.researchobject.org/workflow-run-crate/profiles/process_run_crate/#requirements)
 
 #### Pre-processing and post-processing
@@ -133,7 +133,7 @@ A [PropertyValue] instance used to represent a performance metric MUST have a un
 
 This aligns with the guidance on resource usage metrics above, except that the metrics are connected through [result] rather than [resourceUsage].
 
-*Note 2026-02-26: this link does not yet work as the material is not yet merged into RDMkit*
+*Note 2026-02-26: this link does not yet work as the material is not yet merged into RDMkit*  
 For guidance on best-practice metrics to collect for federated learning, see [RDMkit: Federated Learning](https://rdmkit.elixir-europe.org/federated_learning).
 
 ### Output model
@@ -145,7 +145,7 @@ The crate MUST contain a data entity representing the output model. This could b
 * SHOULD declare [encodingFormat] and/or [conformsTo] with the format for the model. See [RO-Crate: Adding detailed descriptions of File encodings](https://www.researchobject.org/ro-crate/specification/1.2/data-entities.html#adding-detailed-descriptions-of-file-encodings) and [RO-Crate: File format profiles](https://www.researchobject.org/ro-crate/specification/1.2/data-entities.html#file-format-profiles).
 * MAY be a [web-based data entity](https://www.researchobject.org/ro-crate/specification/1.2/data-entities.html#web-based-data-entities) which MAY be access-controlled
 
-The model MAY be further documented by one or more supplementary files, such as [Model Cards](https://huggingface.co/docs/hub/model-cards) or [AI Model Passport]([https://arxiv.org/abs/2506.22358](https://arxiv.org/abs/2506.22358)). Where such files are represented as data entities within the crate:
+The model MAY be further documented by one or more supplementary files, such as [Model Cards](https://huggingface.co/docs/hub/model-cards) or [AI Model Passport](https://arxiv.org/abs/2506.22358). Where such files are represented as data entities within the crate:
 
 * the model entity MUST reference them through [subjectOf]  
 * If the files were automatically generated during/at the end of the training process, the relevant [CreateAction] SHOULD reference them via [result]
@@ -190,10 +190,10 @@ In processes where sensitive data is used, the [Five Safes RO-Crate] profile MAY
 [subjectOf]: http://schema.org/subjectOf
 [SoftwareApplication]: http://schema.org/SoftwareApplication
 [SoftwareSourceCode]: http://schema.org/SoftwareSourceCode
-[ComputationalWorkflow]: http://schema.org/ComputationalWorkflow
+[ComputationalWorkflow]: https://bioschemas.org/ComputationalWorkflow
 [version]: http://schema.org/version
 [PropertyValue]: http://schema.org/PropertyValue
-[environment]: http://schema.org/environment
+[environment]: https://w3id.org/ro/terms/workflow-run#environment
 [resourceUsage]: https://w3id.org/ro/terms/workflow-run#resourceUsage
 [name]: http://schema.org/name
 [description]: http://schema.org/description
