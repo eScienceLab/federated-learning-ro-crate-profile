@@ -22,7 +22,6 @@ jobs:
         with:
           node-version: "19"
       - name: Install dependencies
-        working-directory: ./docs
         run: |
           sudo apt-get install -y build-essential zlib1g-dev
           gem install bundler
@@ -46,11 +45,9 @@ jobs:
           ./_site
 
       - name: Ensure no unexpected encoded HTML in output
-        working-directory: ./docs
         run: |
           ! fgrep -R 'lt;blockquote' _site
 
       - name: Ensure no unexpected jekyll in output
-        working-directory: ./docs
         run: |
           ! fgrep -R 'site.pages' _site
