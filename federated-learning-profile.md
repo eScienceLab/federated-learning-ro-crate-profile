@@ -30,23 +30,21 @@ At minimum: Inform a recipient of the federated learning configuration that was 
 
 Ideal: Enable the federated learning process to be re-run automatically by providing a standard way to document configuration values.
 
-## Compatibility
+### Compatibility
 
 This profile is based on RO-Crate 1.2 and aims to be compatible with other profiles used in trusted research environments and workflows, including [Five Safes RO-Crate] (0.4+) and the [Workflow Run RO-Crate] family.
 
-## Inheritance
+### Inheritance
 
 This profile inherits all the requirements from [Process Run Crate], a profile designed to capture the execution of one or more computational tools. This ensures consistency in the core metadata structure of the crate.
 
 To summarise this profile as an extension of Process Run Crate: the [CreateAction] represents the learning process, with [object] referencing the training datasets AND the learning configuration, [result] referencing the output model, and [instrument] referencing the federated learning framework used (e.g. Flower).
 
-## Example Metadata Document (`ro-crate-metadata.json`)
+### Example Metadata Document (`ro-crate-metadata.json`)
 
 Example metadata file: [JSON-LD](example-fl-crate/ro-crate-metadata.json), [HTML preview](example-fl-crate/ro-crate-preview.html).
 
-## Full Specification
-
-### Input data
+## Input data
 
 Each dataset used for training SHOULD be represented by a data entity in the crate. The data itself MAY be access controlled. 
 
@@ -60,17 +58,17 @@ In data entities representing training datasets:
 
 Each entity representing a training dataset MUST be referenced from [object] on the [CreateAction] which describes the training execution (see [Federated Learning Process Execution](#federated-learning-process-execution)).
 
-#### Data partitioning strategy
+### Data partitioning strategy
 
 The federated learning process described in the crate is assumed to use a “horizontal” data partitioning strategy, where each client site holds the same variables for a different cohort.
 
 Future versions of this profile may also support “vertical” data partitioning, where different clients hold different variables for the same cohort.
 
-### Federated Learning Tools and Configuration
+## Federated Learning Tools and Configuration
 
 It is assumed that there is, at minimum, a tool or script that is distributed to clients and used to train the model on local data. Depending on the architecture or framework used there may be additional tools or scripts, for example to configure a centralized server or aggregator.
 
-#### Training tool or workflow
+### Training tool or workflow
 
 The training could be orchestrated and run using a specific federated learning framework (e.g. Flower), a general software tool (e.g. Python), or a computational workflow (e.g. a Nextflow workflow), according to how the learning process is designed.
 
@@ -83,21 +81,21 @@ That entity MUST be referenced from [instrument] in the [CreateAction] describin
 
 If a computational workflow is used, the crate MAY also include further metadata to conform to [Workflow Run Crate].
 
-#### Training configuration – as files
+### Training configuration – as files
 
 Where the training is configured using configuration files or scripts, those files SHOULD be included in the crate and described using data entities. 
 
 Those entities SHOULD be referenced from [object] in the [CreateAction] describing the training execution (see [Federated Learning Process Execution](#federated-learning-process-execution)).
 
-#### Training configuration – as environment variables
+### Training configuration – as environment variables
 
 Configuration that is provided using environment variables should be described using [PropertyValue] entities, as in [Process Run Crate: Representing environment variable settings](https://www.researchobject.org/workflow-run-crate/profiles/process_run_crate/#representing-environment-variable-settings)
 
-### Federated Learning Process Execution
+## Federated Learning Process Execution
 
 It is assumed that the training process will usually be captured as a single [CreateAction]. 
 
-#### Execution of the training process
+### Execution of the training process
 
 A [CreateAction] entity MUST be present which describes the execution of the training process using the following properties:
 
@@ -112,20 +110,20 @@ A [CreateAction] entity MUST be present which describes the execution of the tra
 * [resourceUsage] MAY reference [resource usage metrics](#metrics---resource-usage) for the training process  
 * Other properties (e.g. [name], [description], [agent]) SHOULD follow the guidelines set in [Process Run Crate](https://www.researchobject.org/workflow-run-crate/profiles/process_run_crate/#requirements)
 
-#### Pre-processing and post-processing
+### Pre-processing and post-processing
 
 Additional [CreateAction]s MAY be included in the crate to describe pre- and post- processing steps. See [Process Run Crate: Multiple processes](https://www.researchobject.org/workflow-run-crate/profiles/process_run_crate/#multiple-processes).
 
 Note that if those pre- or post-processing steps are part of an automated workflow, they may be sufficiently described by using [Workflow Run Crate] or [Provenance Run Crate].
 
-#### Metrics - resource usage
+### Metrics - resource usage
 
 Resource metrics – such as memory usage, execution time, estimated carbon cost, etc. –  MAY be included in the crate. If they are they SHOULD follow the guidance in [Provenance Run Crate: Representing resource usage](https://www.researchobject.org/workflow-run-crate/profiles/provenance_run_crate/#representing-resource-usage).
 
 *Note 2026-02-26: this link does not yet work as the material is not yet merged into RDMkit*  
 For guidance on best-practice metrics to collect for federated learning, see [RDMkit: Federated Learning](https://rdmkit.elixir-europe.org/federated_learning).
 
-#### Metrics - model performance
+### Metrics - model performance
 
 Metrics that describe the performance of the training process and/or the trained model – such as drift detection metrics, loss/accuracy metrics, client-participation rate, etc. –  MAY be included in the crate. If included, they SHOULD be described using [PropertyValue] entities, and those entities MUST be linked from [result] on the [CreateAction] (along with the model itself, see [Output model](#output-model)).
 
@@ -136,7 +134,7 @@ This aligns with the guidance on resource usage metrics above, except that the m
 *Note 2026-02-26: this link does not yet work as the material is not yet merged into RDMkit*  
 For guidance on best-practice metrics to collect for federated learning, see [RDMkit: Federated Learning](https://rdmkit.elixir-europe.org/federated_learning).
 
-### Output model
+## Output model
 
 The crate MUST contain a data entity representing the output model. This could be a direct serialization of the model to file, or another representation of the model. The data entity:
 
@@ -150,9 +148,9 @@ The model MAY be further documented by one or more supplementary files, such as 
 * the model entity MUST reference them through [subjectOf]  
 * If the files were automatically generated during/at the end of the training process, the relevant [CreateAction] SHOULD reference them via [result]
 
-### Additional metadata
+## Additional metadata
 
-#### Sensitive Data
+### Sensitive Data
 
 In processes where sensitive data is used, the [Five Safes RO-Crate] profile MAY additionally be followed.
 
