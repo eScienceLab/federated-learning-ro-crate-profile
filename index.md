@@ -8,11 +8,9 @@ Licensed under the Apache License, Version 2.0 (the “License”); you may not 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 
 -->
 
-# RO-Crate for Federated Learning
+# RO-Crate Profile for Federated Learning
 
 **Note:** This is a first draft currently in active development.
-
-## RO-Crate Profile for Federated Learning
 
 A RO-Crate profile for federated learning is being developed as part of the [Fed-A-Crate project](https://elixir-europe.org/how-we-work/scientific-programme/science/hdtr/genomic-data) within the [ELIXIR Human Data and Translational Research programme](https://elixir-europe.org/how-we-work/scientific-programme/science/hdtr).
 
